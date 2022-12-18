@@ -1,8 +1,6 @@
 package fengla2;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class Library2 {
@@ -15,47 +13,13 @@ public class Library2 {
 				new Book("420", "相対性理論入門", "高瀬美和",980), 
 				new Book("440", "ブラックホールの秘密","百瀬仁",1280) 
 		};
-
-		ArrayList<Book> bookList = new ArrayList<Book>();
+		ArrayList<Book> lendingList = new ArrayList<Book>();
 		for(int i=0;i<books.length;i++) {
-			bookList.add(books[i]);        
+			lendingList.add(books[i]);        
 		}
-		for(Book str: bookList) {
+		for(Book str: lendingList) {
 			System.out.println("arraylist");  
 			System.out.println(str);
-		}	
-		
-//		Map<String,ArrayList<String>> libraryMap = sortByCategory(bookList);
-	
-		
-	}
-	
-	private static  Map<String,ArrayList<String,String,Integer>> sortByCategory(ArrayList<Book> bookList) {
-		Map<String, ArrayList<String,String,Integer>> map = new HashMap<>();
-		for(Book book : bookList) {
-			if(map.containsKey(book.getCategory())) {
-				ArrayList<String,String,Integer>names = 
-						map.get(book.getCategory());
-
-				names.add(book.getPersonName());
-
-			}else {
-				ArrayList<String>addName = 
-						new ArrayList<String>();		
-				addName.add(book.getPersonName());
-
-				map.put(book.getBookTitle(),addName);
-
-			}
-		}
-		
-		
-		
-		
-		
-		
-		
-		return map;
-		
+		}		
 	}
 }

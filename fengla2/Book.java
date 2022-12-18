@@ -31,11 +31,11 @@ public class Book {
 	public int getPrice() {
 	return price;
 	}
-	
+/*	
 	public String toString() {
-		return "カテゴリー: " + format(this.category, 6) + "著者: " + format(this.author, 12) 
+		return "カテゴリー: " + format(this.category, 6) + "著者: " + format(this.author, 20) 
 	
-		+ "タイトル:『 " + format(this.title+" 』", 23) +"価格: " + this.price + "円";
+		+ "タイトル:『 " + format(this.title+" 』", 28) +"価格: " + this.price + "円";
 	}
 	
 	private String format(String target, int length) {
@@ -46,4 +46,26 @@ public class Book {
 	private int getByteLength(String string, Charset charset) {
 		return string.getBytes(charset).length;
 	}
+	
+	*/
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("カテゴリー：" + format(category,8));
+		sb.append("著者：" + format(author,16));
+		sb.append("タイトル：" + format("『" + title + "』",40));
+		sb.append(String.format("価格：%6d円",price));
+		return sb.toString();
+		}
+
+		    private static String format(String target, int length){
+		        int byteDiff = (getByteLength(target, Charset.forName("UTF-8"))-target.length())/2;
+		        return String.format("%-"+(length-byteDiff)+"s", target);
+		    }
+		    
+		    private static int getByteLength(String string, Charset charset) {
+		        return string.getBytes(charset).length;
+		    }
+	
+	
+	
 }
