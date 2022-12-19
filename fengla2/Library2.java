@@ -38,12 +38,12 @@ public class Library2 {
 				ArrayList<Object>books = 
 						map.get(book.getCategory());
 
-				books.add(book.getAuthor(),book.getTitle(),book.getPrice());
+				books.add(book);
 
 			}else {
-				ArrayList<String>addBooks = 
-						new ArrayList();		
-				addBooks.add(book.getAuthor(),book.getTitle(),book.getPrice());
+				ArrayList<Object>addBooks = 
+						new ArrayList<Object>();		
+				addBooks.add(book);
 
 				map.put(book.getCategory(),addBooks);
 
@@ -54,6 +54,11 @@ public class Library2 {
 
 		System.out.println("");
 
+		for(Entry<String, ArrayList<Object>> entry : map.entrySet()){
+			System.out.println(entry.getKey());
+			for(Object author:entry.getValue())
+				System.out.println("  "+ author);
+		}
 		return map;
 	}	
 
