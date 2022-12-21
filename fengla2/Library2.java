@@ -26,23 +26,23 @@ public class Library2 {
 			System.out.println(str);
 		}	
 
-		Map<String,ArrayList<Object>> libraryMap = booksClassification(bookList);
+		Map<String, ArrayList<Book>> libraryMap = booksClassification(bookList);
 
 	}
 
-	private static Map<String, ArrayList<Object>> booksClassification(ArrayList<Book> bookList) {
+	private static Map<String, ArrayList<Book>> booksClassification(ArrayList<Book> bookList) {
 
-		Map<String, ArrayList<Object>> map = new HashMap<>();
+		Map<String, ArrayList<Book>> map = new HashMap<>();
 		for(Book book : bookList) {
 			if(map.containsKey(book.getCategory())) {
-				ArrayList<Object>books = 
+				ArrayList<Book>books = 
 						map.get(book.getCategory());
 
 				books.add(book);
 
 			}else {
-				ArrayList<Object>addBooks = 
-						new ArrayList<Object>();		
+				ArrayList<Book>addBooks = 
+						new ArrayList<Book>();		
 				addBooks.add(book);
 
 				map.put(book.getCategory(),addBooks);
@@ -54,10 +54,11 @@ public class Library2 {
 
 		System.out.println("");
 
-		for(Entry<String, ArrayList<Object>> entry : map.entrySet()){
+		for(Entry<String, ArrayList<Book>> entry : map.entrySet()){
 			System.out.println(entry.getKey());
-			for(Object author:entry.getValue())
-				System.out.println("  "+ author);
+			for(Book booksIndex:entry.getValue())
+				System.out.println("  "+ booksIndex.getTitle() + " / "
+			+  booksIndex.getAuthor() + " / " +  booksIndex.getPrice() + "円" ) ;
 		}
 		return map;
 	}	
